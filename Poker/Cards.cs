@@ -20,6 +20,14 @@ namespace Poker
             Number = b;
             this.CardId++;
         }
+        
+        public int Shuffle()
+        {
+            var shuffled = new List<Cards>();
+            var rand = new Random();
+            var rdm = rand.Next(1, 4);
+            return rdm;
+        }
 
     }
 }
