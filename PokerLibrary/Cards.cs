@@ -17,7 +17,7 @@ namespace PokerLibrary
         public Cards(string name, int value )
         {
             Id = CardId;
-            CardId += CardId + 1;
+            CardId ++;
             Name = name;
             Value = value;
         }

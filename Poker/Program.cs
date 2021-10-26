@@ -8,11 +8,11 @@ namespace Poker
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("HI");
-            var deck = PokerLib.Shuffle();
+            var deck = PokerLib.Shuffle(PokerLib.Split1(), PokerLib.Split2());
+            
             foreach (var i in deck)
             {
-                Console.WriteLine($"{i.Name} | {i.Id}");
+                Console.WriteLine($"{i.Name} | {i.Value}");
             }
         }
     }
