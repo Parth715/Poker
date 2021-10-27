@@ -9,11 +9,15 @@ namespace Poker
         static void Main(string[] args)
         {
             var deck = PokerLib.Shuffle(PokerLib.Split1(), PokerLib.Split2());
-            
-            foreach (var i in deck)
+            var playAgain = "";
+            do
             {
-                Console.WriteLine($"{i.Name} | {i.Value}");
-            }
+                PokerLib.NewGame();
+
+                Console.WriteLine("Play again? (Y/N)");
+                playAgain = Console.ReadLine();
+            } while (playAgain == "Y" || playAgain == "y");
+            Console.WriteLine("You have entered an invalid input or entered no");
         }
     }
 }

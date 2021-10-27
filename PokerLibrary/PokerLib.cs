@@ -106,6 +106,26 @@ namespace PokerLibrary
             }
             return newshuffle2;
         }
+
+        public static void NewGame()
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("Enter your name");
+            var username = Console.ReadLine();
+            var player1 = new Player(username);
+            var deck = PokerLib.Shuffle(PokerLib.Split1(), PokerLib.Split2());
+            Queue<Cards> User = new Queue<Cards>();
+            Console.WriteLine("Your Hand"+"\n");
+            for (var i = 0; i < 2; i++)
+            {
+                User.Enqueue(deck.Dequeue());
+            }
+            foreach(var i in User)
+            {
+                Console.WriteLine(i.Name );
+            }
+            Console.WriteLine(""+"\n");
+        }
         
     }
 }

@@ -6,16 +6,17 @@ using System.Threading.Tasks;
 
 namespace PokerLibrary
 {
-    public class Cards
+    public class Player
     {
         public string Name { get; set; }
-        public int Value { get; set; }
+        public int Balance { get; set; } = 10000;
+        public Queue<Cards> Hand { get; set; }
 
-
-        public Cards(string name, int value )
+        public Player(string name)
         {
             Name = name;
-            Value = value;
         }
+
+        
     }
 }
