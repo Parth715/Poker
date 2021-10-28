@@ -109,23 +109,85 @@ namespace PokerLibrary
 
         public static void NewGame()
         {
+            var player1 = new Player("Player 1");
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("Enter your name");
-            var username = Console.ReadLine();
-            var player1 = new Player(username);
             var deck = PokerLib.Shuffle(PokerLib.Split1(), PokerLib.Split2());
             Queue<Cards> User = new Queue<Cards>();
-            Console.WriteLine("Your Hand"+"\n");
+            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + ("----Your Hand----".Length / 2)) + "}", "----Your Hand----"));
             for (var i = 0; i < 2; i++)
             {
                 User.Enqueue(deck.Dequeue());
             }
             foreach(var i in User)
             {
-                Console.WriteLine(i.Name );
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (i.Name.Length / 2)) + "}" , i.Name));
             }
             Console.WriteLine(""+"\n");
+            var AI = new Player("Player2");
+            Queue<Cards> Ai = new Queue<Cards>();
+            for (var i = 0; i < 2; i++)
+            {
+                Ai.Enqueue(deck.Dequeue());
+            }
+            var reply = "";
+            Queue<Cards> tablecards = new Queue<Cards>();
+            do
+            {
+                reply = Action(reply);
+                if (reply == "fold")
+                {
+                    Fold();
+                }
+                if (reply == "call")
+                {
+                    Call(tablecards, deck);
+                }
+                if (reply == "raise")
+                {
+                    Raise();
+                }
+            } while (reply != "fold");
+
+        }
+        private static void Fold()
+        {
+            Console.WriteLine("Dealer wins this round");
+
+        }
+
+        private static Queue<Cards> Call(Queue<Cards> table, Queue<Cards> deck)
+        {
+            if (table.Count == 5)
+            {
+                return table;
+            }
+            table.Enqueue(deck.Dequeue());
+            while(table.Count < 3)
+            {
+                table.Enqueue(deck.Dequeue());
+            }
+            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + ("----Table Hand----".Length / 2)) + "}", "----Table Hand----"));
+            foreach (var i in table)
+            {
+               Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (i.Name.Length / 2)) + "}", i.Name));
+            }
+            Console.WriteLine("");
+            return table;
+        }
+
+        private static void Raise()
+        {
+
         }
         
+        private static string Action(string reply)
+        {
+            do
+            {
+                Console.WriteLine("What would you like to do your options are:  Fold | Call | Raise");
+                reply = Console.ReadLine();
+            } while (reply.ToLower() != "fold" && reply.ToLower() != "call" && reply.ToLower() != "raise");
+            return reply;
+        }
     }
 }

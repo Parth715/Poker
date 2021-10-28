@@ -8,12 +8,11 @@ namespace Poker
     {
         static void Main(string[] args)
         {
-            var deck = PokerLib.Shuffle(PokerLib.Split1(), PokerLib.Split2());
             var playAgain = "";
             do
             {
                 PokerLib.NewGame();
-
+                
                 Console.WriteLine("Play again? (Y/N)");
                 playAgain = Console.ReadLine();
             } while (playAgain == "Y" || playAgain == "y");
