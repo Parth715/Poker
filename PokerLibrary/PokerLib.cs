@@ -106,33 +106,26 @@ namespace PokerLibrary
             }
             return newshuffle2;
         }
-
         public static void NewGame()
         {
             var player1 = new Player("Player 1");
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            var deck = PokerLib.Shuffle(PokerLib.Split1(), PokerLib.Split2());
-            Queue<Cards> User = new Queue<Cards>();
-            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + ("----Your Hand----".Length / 2)) + "}", "----Your Hand----"));
-            for (var i = 0; i < 2; i++)
-            {
-                User.Enqueue(deck.Dequeue());
-            }
-            foreach(var i in User)
-            {
-                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (i.Name.Length / 2)) + "}" , i.Name));
-            }
-            Console.WriteLine(""+"\n");
             var AI = new Player("Player2");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            AI.Balance -= 10;
+            player1.Balance -= 10;
+            var deck = PokerLib.Shuffle(PokerLib.Split1(), PokerLib.Split2());
+            List<Cards> User = new List<Cards>();
+            var pot = 20;
+            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + ("----Your Hand----".Length / 2)) + "}", "----Your Hand----"));
+            for (var i = 0; i < 2; i++){User.Add(deck.Dequeue());}//adds 2 cards to the users hand
+            foreach(var i in User){Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (i.Name.Length / 2)) + "}" , i.Name));}//tells you what cards were dealt to you
+            Console.WriteLine(""+"\n");
             Queue<Cards> Ai = new Queue<Cards>();
-            for (var i = 0; i < 2; i++)
-            {
-                Ai.Enqueue(deck.Dequeue());
-            }
+            for (var i = 0; i < 2; i++){Ai.Enqueue(deck.Dequeue());}//gives the Ai 2 cards
             var reply = "";
-            Queue<Cards> tablecards = new Queue<Cards>();
-            do
-            {
+            List<Cards> tablecards = new List<Cards>();
+            var combination = new List<Cards>();
+            do{
                 reply = Action(reply);
                 if (reply == "fold")
                 {
@@ -140,54 +133,126 @@ namespace PokerLibrary
                 }
                 if (reply == "call")
                 {
-                    Call(tablecards, deck);
+                    combination = Check(tablecards, User);
+                    Call(tablecards, deck, reply);
                 }
                 if (reply == "raise")
                 {
-                    Raise();
+                    var amt = 0;
+                    pot = Pot(amt, player1, pot, AI);
+                    Call(tablecards, deck, reply);
                 }
-            } while (reply != "fold");
+                if (reply == "all in")
+                {
+                    AllIn(pot, player1, AI);
+       
+                        Call(tablecards, deck, reply);
+                }
+            } while ((reply == "call" || reply == "raise") && combination.Count < 7);
 
         }
         private static void Fold()
         {
             Console.WriteLine("Dealer wins this round");
-
         }
-
-        private static Queue<Cards> Call(Queue<Cards> table, Queue<Cards> deck)
+        private static List<Cards> Call(List<Cards> table, Queue<Cards> deck, string reply)
         {
+            var repeat = 1;
             if (table.Count == 5)
+            if (reply == "all in")
             {
-                return table;
+                repeat = 5 - table.Count ;
             }
-            table.Enqueue(deck.Dequeue());
-            while(table.Count < 3)
-            {
-                table.Enqueue(deck.Dequeue());
+            for(var i = 0; i < repeat; i++)
+            { 
+                table.Add(deck.Dequeue());
+                while(table.Count < 3)
+                {
+                    table.Add(deck.Dequeue());
+                }
+                    if (table.Count == 5)
+                    {
+                        reply = "";
+                    }
             }
             Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + ("----Table Hand----".Length / 2)) + "}", "----Table Hand----"));
             foreach (var i in table)
             {
-               Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (i.Name.Length / 2)) + "}", i.Name));
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (i.Name.Length / 2)) + "}", i.Name));
             }
             Console.WriteLine("");
             return table;
         }
-
-        private static void Raise()
+        private static int Pot(int amt, Player player1, int pot, Player AI)
         {
-
+            Console.WriteLine("How much would you like to raise by?");
+            Console.WriteLine($"Your balance is {player1.Balance}");
+            var amount = "";
+            var ans = false;
+            do
+            {
+                amount = Console.ReadLine();
+                try
+                {
+                    amt = int.Parse(amount);
+                    if (amt <= player1.Balance)
+                    {
+                        ans = true;
+                    }
+                    if (amt > player1.Balance || amt < 0)
+                    {
+                        Console.WriteLine("That is an invalid amount enter an amount that you haveall");
+                    }
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Please enter a numerical value");
+                    ans = false;
+                }
+            } while (!ans);
+            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + ("Player 2 called".Length / 2)) + "}", "Player 2 called"));
+            pot = Raise(amt, player1, AI, pot);
+            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + ($"Your balance is: {player1.Balance}".Length / 2)) + "}", $"Your balance is: {player1.Balance}"));
+            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + ($"There is ${pot} on the table".Length / 2)) + "}", $"There is ${pot} on the table\n"));
+            return pot;
         }
-        
+        private static int AllIn(int pot, Player player1, Player AI)
+        {
+            var allin = player1.Balance;
+            player1.Balance -= allin;
+            AI.Balance -= allin;
+            pot += allin * 2;
+            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + ("Player 2 also went all in".Length / 2)) + "}", "Player 2 also went all in"));
+            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + ($"Your balance is: {player1.Balance}".Length / 2)) + "}", $"Your balance is: {player1.Balance}"));
+            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + ($"There is ${pot} on the table".Length / 2)) + "}", $"There is ${pot} on the table\n"));
+            return pot;
+        }
+        private static int Raise(int amt, Player player1, Player AI, int pot)
+        {
+                player1.Balance -= amt;
+                AI.Balance -= amt;
+                return pot += amt * 2;
+        }
         private static string Action(string reply)
         {
             do
             {
-                Console.WriteLine("What would you like to do your options are:  Fold | Call | Raise");
+                Console.WriteLine("What would you like to do:  Fold | Call | Raise | All In");
                 reply = Console.ReadLine();
-            } while (reply.ToLower() != "fold" && reply.ToLower() != "call" && reply.ToLower() != "raise");
+            } while (reply.ToLower() != "fold" && reply.ToLower() != "call" && reply.ToLower() != "raise" && reply.ToLower() != "all in");
             return reply;
+        }
+        private static List<Cards> Check(List<Cards>tablecards, List<Cards> User)
+        {
+            var final = new List<Cards>(tablecards);
+            if(tablecards.Count == 5)
+            {
+                foreach (var i in User)
+                {
+                    final.Add(i);
+                }
+            }
+            return final;     
         }
     }
 }
