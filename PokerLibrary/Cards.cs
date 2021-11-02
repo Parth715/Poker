@@ -10,12 +10,13 @@ namespace PokerLibrary
     {
         public string Name { get; set; }
         public int Value { get; set; }
+        public int Num { get; set; }
 
-
-        public Cards(string name, int value )
+        public Cards(string name, int value, int num )
         {
             Name = name;
             Value = value;
+            Num = num;
         }
     }
 }

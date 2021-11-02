@@ -9,62 +9,62 @@ namespace PokerLibrary
         public static List<Cards> Split1()
         {
             List<Cards> Deck = new List<Cards>();
-            Deck.Add(new Cards("2 of Hearts", 1));
-            Deck.Add(new Cards("2 of Clubs", 2));
-            Deck.Add(new Cards("2 of Diamonds", 3));
-            Deck.Add(new Cards("2 of Spades", 4));
-            Deck.Add(new Cards("3 of Hearts", 5));
-            Deck.Add(new Cards("3 of Clubs", 6));
-            Deck.Add(new Cards("3 of Diamonds", 7));
-            Deck.Add(new Cards("3 of Spades", 8));
-            Deck.Add(new Cards("4 of Hearts", 9));
-            Deck.Add(new Cards("4 of Clubs", 10));
-            Deck.Add(new Cards("4 of Diamonds", 11));
-            Deck.Add(new Cards("4 of Spades", 12));
-            Deck.Add(new Cards("5 of Hearts", 13));
-            Deck.Add(new Cards("5 of Clubs", 14));
-            Deck.Add(new Cards("5 of Diamonds", 15));
-            Deck.Add(new Cards("5 of Spades", 16));
-            Deck.Add(new Cards("6 of Hearts", 17));
-            Deck.Add(new Cards("6 of Clubs", 18));
-            Deck.Add(new Cards("6 of Diamonds", 19));
-            Deck.Add(new Cards("6 of Spades", 20));
-            Deck.Add(new Cards("7 of Hearts", 21));
-            Deck.Add(new Cards("7 of Clubs", 22));
-            Deck.Add(new Cards("7 of Diamonds", 23));
-            Deck.Add(new Cards("7 of Spades", 24));
-            Deck.Add(new Cards("8 of Hearts", 25));
-            Deck.Add(new Cards("8 of Clubs", 26));
+            Deck.Add(new Cards("2 of Hearts", 1, 2));
+            Deck.Add(new Cards("2 of Clubs", 2, 2));
+            Deck.Add(new Cards("2 of Diamonds", 3, 2));
+            Deck.Add(new Cards("2 of Spades", 4, 2));
+            Deck.Add(new Cards("3 of Hearts", 5, 3));
+            Deck.Add(new Cards("3 of Clubs", 6, 3));
+            Deck.Add(new Cards("3 of Diamonds", 7, 3));
+            Deck.Add(new Cards("3 of Spades", 8, 3));
+            Deck.Add(new Cards("4 of Hearts", 9, 4));
+            Deck.Add(new Cards("4 of Clubs", 10, 4));
+            Deck.Add(new Cards("4 of Diamonds", 11, 4));
+            Deck.Add(new Cards("4 of Spades", 12, 4));
+            Deck.Add(new Cards("5 of Hearts", 13, 5));
+            Deck.Add(new Cards("5 of Clubs", 14, 5));
+            Deck.Add(new Cards("5 of Diamonds", 15, 5));
+            Deck.Add(new Cards("5 of Spades", 16, 5));
+            Deck.Add(new Cards("6 of Hearts", 17, 6));
+            Deck.Add(new Cards("6 of Clubs", 18, 6));
+            Deck.Add(new Cards("6 of Diamonds", 19, 6));
+            Deck.Add(new Cards("6 of Spades", 20, 6));
+            Deck.Add(new Cards("7 of Hearts", 21, 7));
+            Deck.Add(new Cards("7 of Clubs", 22, 7));
+            Deck.Add(new Cards("7 of Diamonds", 23, 7));
+            Deck.Add(new Cards("7 of Spades", 24, 7));
+            Deck.Add(new Cards("8 of Hearts", 25, 8));
+            Deck.Add(new Cards("8 of Clubs", 26, 8));
             return Deck;
         }
         public static List<Cards> Split2() {
             List<Cards> Deck = new List<Cards>();
-            Deck.Add(new Cards("8 of Diamonds", 27));
-            Deck.Add(new Cards("8 of Spades", 28));
-            Deck.Add(new Cards("9 of Hearts", 29));
-            Deck.Add(new Cards("9 of Clubs", 30));
-            Deck.Add(new Cards("9 of Diamonds", 31));
-            Deck.Add(new Cards("9 of Spades", 32));
-            Deck.Add(new Cards("10 of Hearts", 33));
-            Deck.Add(new Cards("10 of Clubs", 34));
-            Deck.Add(new Cards("10 of Diamonds", 35));
-            Deck.Add(new Cards("10 of Spades", 36));
-            Deck.Add(new Cards("Jack of Hearts", 37));
-            Deck.Add(new Cards("Jack of Clubs", 38));
-            Deck.Add(new Cards("Jack of Diamonds", 39));
-            Deck.Add(new Cards("Jack of Spades", 40));
-            Deck.Add(new Cards("Queen of Hearts", 41));
-            Deck.Add(new Cards("Queen of Clubs", 42));
-            Deck.Add(new Cards("Queen of Diamonds", 43));
-            Deck.Add(new Cards("Queen of Spades", 44));
-            Deck.Add(new Cards("King of Hearts", 45));
-            Deck.Add(new Cards("King of Clubs", 46));
-            Deck.Add(new Cards("King of Diamonds", 47));
-            Deck.Add(new Cards("King of Spades", 48));
-            Deck.Add(new Cards("Ace of Hearts", 49));
-            Deck.Add(new Cards("Ace of Clubs", 50));
-            Deck.Add(new Cards("Ace of Diamonds", 51));
-            Deck.Add(new Cards("Ace of Spades", 52));
+            Deck.Add(new Cards("8 of Diamonds", 27, 8));
+            Deck.Add(new Cards("8 of Spades", 28, 8));
+            Deck.Add(new Cards("9 of Hearts", 29, 9));
+            Deck.Add(new Cards("9 of Clubs", 30, 9));
+            Deck.Add(new Cards("9 of Diamonds", 31, 9));
+            Deck.Add(new Cards("9 of Spades", 32, 9));
+            Deck.Add(new Cards("10 of Hearts", 33, 10));
+            Deck.Add(new Cards("10 of Clubs", 34, 10));
+            Deck.Add(new Cards("10 of Diamonds", 35, 10));
+            Deck.Add(new Cards("10 of Spades", 36, 10));
+            Deck.Add(new Cards("Jack of Hearts", 37, 11));
+            Deck.Add(new Cards("Jack of Clubs", 38, 11));
+            Deck.Add(new Cards("Jack of Diamonds", 39, 11));
+            Deck.Add(new Cards("Jack of Spades", 40, 11));
+            Deck.Add(new Cards("Queen of Hearts", 41, 12));
+            Deck.Add(new Cards("Queen of Clubs", 42, 12));
+            Deck.Add(new Cards("Queen of Diamonds", 43, 12));
+            Deck.Add(new Cards("Queen of Spades", 44, 12));
+            Deck.Add(new Cards("King of Hearts", 45, 13));
+            Deck.Add(new Cards("King of Clubs", 46, 13));
+            Deck.Add(new Cards("King of Diamonds", 47, 13));
+            Deck.Add(new Cards("King of Spades", 48, 13));
+            Deck.Add(new Cards("Ace of Hearts", 49, 14));
+            Deck.Add(new Cards("Ace of Clubs", 50, 14));
+            Deck.Add(new Cards("Ace of Diamonds", 51, 14));
+            Deck.Add(new Cards("Ace of Spades", 52, 14));
             return Deck;
         }
         public static Queue<Cards> Shuffle(List<Cards> deck, List<Cards> deck2)
@@ -106,7 +106,7 @@ namespace PokerLibrary
             }
             return newshuffle2;
         }
-        public static void NewGame()
+        public static bool NewGame()
         {
             var player1 = new Player("Player 1");
             var AI = new Player("Player2");
@@ -117,15 +117,15 @@ namespace PokerLibrary
             List<Cards> User = new List<Cards>();
             var pot = 20;
             Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + ("----Your Hand----".Length / 2)) + "}", "----Your Hand----"));
-            for (var i = 0; i < 2; i++){User.Add(deck.Dequeue());}//adds 2 cards to the users hand
-            foreach(var i in User){Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (i.Name.Length / 2)) + "}" , i.Name));}//tells you what cards were dealt to you
-            Console.WriteLine(""+"\n");
-            Queue<Cards> Ai = new Queue<Cards>();
-            for (var i = 0; i < 2; i++){Ai.Enqueue(deck.Dequeue());}//gives the Ai 2 cards
+            for (var i = 0; i < 2; i++) { User.Add(deck.Dequeue()); }//adds 2 cards to the users hand
+            foreach (var i in User) { Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (i.Name.Length / 2)) + "}", i.Name)); }//tells you what cards were dealt to you
+            Console.WriteLine("" + "\n");
+            List<Cards> Ai = new List<Cards>();
+            for (var i = 0; i < 2; i++) { Ai.Add(deck.Dequeue()); }//gives the Ai 2 cards
             var reply = "";
             List<Cards> tablecards = new List<Cards>();
             var combination = new List<Cards>();
-            do{
+            do {
                 reply = Action(reply);
                 if (reply == "fold")
                 {
@@ -133,8 +133,8 @@ namespace PokerLibrary
                 }
                 if (reply == "call")
                 {
-                    combination = Check(tablecards, User);
                     Call(tablecards, deck, reply);
+                    combination = Check(tablecards, User);
                 }
                 if (reply == "raise")
                 {
@@ -144,12 +144,68 @@ namespace PokerLibrary
                 }
                 if (reply == "all in")
                 {
-                    AllIn(pot, player1, AI);
-       
-                        Call(tablecards, deck, reply);
+                    pot = AllIn(pot, player1, AI);
+                    combination = Call(tablecards, deck, reply);
+                    foreach (var i in User)
+                    {
+                        combination.Add(i);
+                    }
                 }
-            } while ((reply == "call" || reply == "raise") && combination.Count < 7);
+            } while ((reply == "call" || reply == "raise") && combination.Count <= 6);
+            var AIdeck = new List<Cards>() { };
 
+            foreach (var i in tablecards)
+            {
+                AIdeck.Add(i);
+            }
+            var CHECK = true;
+            while(CHECK)
+            { 
+                if(PossibleHands.RoyalFlush(combination))
+            {
+                Console.WriteLine("You got a Royal flush");
+                if (PossibleHands.RoyalFlush(AIdeck))
+                {
+                    Console.WriteLine("Ai also got a Royal flush, pot will be split.");
+                    var payout = pot / 2;
+                    AI.Balance += payout;
+                    player1.Balance += payout;
+                    return true;
+                }
+                Console.WriteLine("Congrats you win this round");
+                player1.Balance += pot;
+                return true;
+            }
+                if (PossibleHands.StraightFlush(combination))
+                {
+    
+                }
+            
+                var high = PossibleHands.HighCard(User);
+                var AiHigh = PossibleHands.HighCard(Ai);
+
+                if (high > AiHigh)
+                {
+                    Console.WriteLine("You had the higher card, you won");
+                    player1.Balance += pot;
+                    CHECK = false;
+                }
+                if (AiHigh > high)
+                {
+                    Console.WriteLine("Player 2 had the higher card, you lost");
+                    AI.Balance += pot;
+                    CHECK = false;
+                }
+                if (AiHigh == high)
+                {
+                 Console.WriteLine("Both have equal high cards, pot is split");
+                    pot = pot / 2;
+                    player1.Balance += pot;
+                    AI.Balance += pot;
+                }
+            }
+            Console.WriteLine($"Your balance is {player1.Balance}");
+            return true;
         }
         private static void Fold()
         {
@@ -158,9 +214,12 @@ namespace PokerLibrary
         private static List<Cards> Call(List<Cards> table, Queue<Cards> deck, string reply)
         {
             var repeat = 1;
-            if (table.Count == 5)
             if (reply == "all in")
             {
+                while (table.Count < 3)
+                {
+                    table.Add(deck.Dequeue());
+                }
                 repeat = 5 - table.Count ;
             }
             for(var i = 0; i < repeat; i++)
@@ -170,10 +229,6 @@ namespace PokerLibrary
                 {
                     table.Add(deck.Dequeue());
                 }
-                    if (table.Count == 5)
-                    {
-                        reply = "";
-                    }
             }
             Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + ("----Table Hand----".Length / 2)) + "}", "----Table Hand----"));
             foreach (var i in table)
@@ -195,13 +250,13 @@ namespace PokerLibrary
                 try
                 {
                     amt = int.Parse(amount);
-                    if (amt <= player1.Balance)
+                    if (amt <= player1.Balance && amt > 0)
                     {
                         ans = true;
                     }
                     if (amt > player1.Balance || amt < 0)
                     {
-                        Console.WriteLine("That is an invalid amount enter an amount that you haveall");
+                        Console.WriteLine("That is an invalid amount enter an amount that you have");
                     }
                 }
                 catch (Exception)
@@ -254,5 +309,6 @@ namespace PokerLibrary
             }
             return final;     
         }
+        
     }
 }
